@@ -5,6 +5,8 @@ using UnityEngine;
 namespace Project.Utils {
 
     public static class Utils {
+
+        // Random Vector3 X and Y direction
         public static Vector3 GetRandomDir() {
            
             return new Vector3(

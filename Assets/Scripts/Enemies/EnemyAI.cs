@@ -14,7 +14,7 @@ public class EnemyAI : MonoBehaviour {
     private NavMeshAgent navMeshAgent;
     private State state;
     private float roamingTime;
-    private Vector3 roamPostion;
+    private Vector3 roamPosition;
     private Vector3 startingPostion;
 
     // State machine
@@ -45,7 +45,7 @@ public class EnemyAI : MonoBehaviour {
                 roamingTime -= Time.deltaTime;
 
                 if (roamingTime < 0) {
-                    Roaming();
+                    Roaming(true);
                     roamingTime = roamingDistanceMax;
                 }
                 break;
@@ -53,13 +53,28 @@ public class EnemyAI : MonoBehaviour {
     }
 
     // Set new destination
-    private void Roaming() {
-        roamPostion = GetRoamingPosition();
-        navMeshAgent.SetDestination(roamPostion);
+    private void Roaming(bool enemyWalkAnywhere = false) {
+
+        if (enemyWalkAnywhere) {
+            startingPostion = transform.position;
+        }
+        
+        roamPosition = GetRoamingPosition();
+        ChangeFacingDirection(startingPostion, roamPosition);
+        navMeshAgent.SetDestination(roamPosition);
     }
 
     // Finding a new path
     private Vector3 GetRoamingPosition() {
         return startingPostion + Utils.GetRandomDir() * UnityEngine.Random.Range(roamingDistanceMin, roamingDistanceMax);
+    }
+
+    // Enemy rotation
+    private void ChangeFacingDirection(Vector3 sourcePosition, Vector3 targetPosition) {
+        if (sourcePosition.x > targetPosition.x) {
+            transform.rotation = Quaternion.Euler(0, -180, 0);
+        } else {
+            transform.rotation = Quaternion.Euler(0, 0, 0);
+        }
     }
 }
