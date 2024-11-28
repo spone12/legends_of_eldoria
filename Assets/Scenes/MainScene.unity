@@ -173,7 +173,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3e29ff85cd50424caea03c030e6bab1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hintText: {fileID: 1918666813}
+  tooltip: {fileID: 1918666813}
   isNearPlayer: 0
   eventHandler: {fileID: 0}
 --- !u!61 &141726418
@@ -233,7 +233,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 148554992}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 65005a044c0fdf74e95347d39e46e642, type: 3}
   m_Name: 
@@ -73042,10 +73042,6 @@ PrefabInstance:
     - target: {fileID: 3548210459506030580, guid: 6c87af65d6d133e4ba055f83b1063981, type: 3}
       propertyPath: m_Name
       value: Main Camera
-      objectReference: {fileID: 0}
-    - target: {fileID: 3623149125148054084, guid: 6c87af65d6d133e4ba055f83b1063981, type: 3}
-      propertyPath: orthographic size
-      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3841854218115623150, guid: 6c87af65d6d133e4ba055f83b1063981, type: 3}
       propertyPath: m_LocalPosition.x

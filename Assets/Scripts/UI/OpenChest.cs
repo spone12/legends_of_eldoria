@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ChestInteraction : MonoBehaviour
 {
-    public GameObject hintText;
+    public GameObject tooltip;
 
     public bool isNearPlayer;
 
@@ -13,18 +13,24 @@ public class ChestInteraction : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        // eventHandler = GetComponent<InputEventHandler>();
-        if (hintText != null) {
-            hintText.SetActive(false);
+
+        GameObject playerObject = GameObject.Find("Player");
+        if (playerObject != null) {
+            eventHandler = playerObject.GetComponent<InputEventHandler>();
+        }
+
+        if (tooltip != null) {
+            tooltip.SetActive(false);
         }   
     }
 
     private void OnTriggerEnter2D(Collider2D collision) {
 
         if (collision.CompareTag("Player")) {
-            
-            if (hintText != null) {
-                hintText.SetActive(true);
+
+            eventHandler.EventHandlerManagment(true);
+            if (tooltip != null) {
+                tooltip.SetActive(true);
             }
 
             // The player near the object
@@ -36,13 +42,13 @@ public class ChestInteraction : MonoBehaviour
     private void OnTriggerExit2D(Collider2D collision) {
 
         if (collision.CompareTag("Player")) {
-            if (hintText != null) {
-                hintText.SetActive(false);
+            if (tooltip != null) {
+                tooltip.SetActive(false);
             }
 
             isNearPlayer = false;
             InputEventHandler.OnActionKeyPressed -= OpenChest;
-            //eventHandler.enable = false;
+            eventHandler.EventHandlerManagment();
         }
     }
 

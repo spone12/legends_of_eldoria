@@ -14,4 +14,11 @@ public class InputEventHandler : MonoBehaviour
             OnActionKeyPressed?.Invoke();
         }   
     }
+
+    /**
+    * Enable or disable script component
+    */
+    public void EventHandlerManagment(bool enabled = false) {
+        this.enabled = enabled;
+    }
 }
