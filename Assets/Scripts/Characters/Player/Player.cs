@@ -42,8 +42,4 @@ public class Player : MonoBehaviour
         Vector3 playerPos = Camera.main.WorldToScreenPoint(transform.position);
         return playerPos;
     }
-
-    void OnCollisionEnter2D(Collision2D collision) {
-        Debug.Log("Player collided with: " + collision.gameObject.name);
-    }
 }
