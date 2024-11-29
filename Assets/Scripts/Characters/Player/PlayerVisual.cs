@@ -24,9 +24,9 @@ public class PlayerVisual : MonoBehaviour
         Vector3 playerPos = Player.Instanse.GetPlayerScreenPostion();
 
         if (mousePos.x < playerPos.x) {
-            spriteRenderer.flipX = false;
-        } else {
             spriteRenderer.flipX = true;
+        } else {
+            spriteRenderer.flipX = false;
         }
     }
 }
