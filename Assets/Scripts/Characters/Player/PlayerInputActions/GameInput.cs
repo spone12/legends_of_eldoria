@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.InputSystem;
 using UnityEngine;
+using System;
 
 public class GameInput : MonoBehaviour
 {
@@ -9,12 +10,21 @@ public class GameInput : MonoBehaviour
 
     private PlayerInputActions playerInputActions;
 
+    public event EventHandler OnPlayerAttack;
+
     private void Awake() {
         Instance = this;
 
         playerInputActions = new PlayerInputActions();
         playerInputActions.Enable();
+
+        playerInputActions.Combat.Attack.started += PlayerAttack_started;
     }
+
+    private void PlayerAttack_started(InputAction.CallbackContext obj) {
+        OnPlayerAttack?.Invoke(this, EventArgs.Empty);
+    }
+
     public Vector2 GetMovementVector() {
         Vector2 inputVector = playerInputActions.Player.Move.ReadValue<Vector2>();
         return inputVector;
