@@ -16,6 +16,9 @@ public class SwordSlashVisual : MonoBehaviour
         sword.OnSwordSwing += Sword_OnSwordSwing;
     }
 
+    /**
+     * Trigger sword attack
+    */
     private void Sword_OnSwordSwing(object sender, System.EventArgs e) {
         animator.SetTrigger(ATTACK);
     }

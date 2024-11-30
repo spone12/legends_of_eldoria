@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 [SelectionBase]
@@ -30,18 +28,30 @@ public class Player : MonoBehaviour
         GameInput.Instance.OnPlayerAttack += Player_OnPlayerAttack;
     }
 
+    /**
+     * Trigger to track a character's attack
+     */
     private void Player_OnPlayerAttack(object sender, EventArgs e) {
         ActiveWeapon.Instance.GetActiveWeapon().Attack();
     }
 
+    /**
+     * 
+     */
     private void Update() {
         inputVector = GameInput.Instance.GetMovementVector();
     }
-    // Update is called once per frame
+
+    /**
+     *  Update is called once per frame
+     */
     private void FixedUpdate() {
         HandleMovement();
     }
 
+    /**
+     *  Player handle movement
+     */
     private void HandleMovement() {
         rb.MovePosition(rb.position + inputVector * (movingSpeed * Time.fixedDeltaTime));
 
@@ -53,8 +63,14 @@ public class Player : MonoBehaviour
         }
     }
 
+    /**
+     * Player is running
+     */
     public bool IsRunning() { return isRunning; }
 
+    /**
+     * Get player position
+     */
     public Vector3 GetPlayerScreenPostion() {
         Vector3 playerPos = Camera.main.WorldToScreenPoint(transform.position);
         return playerPos;

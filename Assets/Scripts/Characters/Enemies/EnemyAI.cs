@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 using Project.Utils;
@@ -51,8 +49,10 @@ public class EnemyAI : MonoBehaviour {
                 break;
         }
     }
-
-    // Set new destination
+ 
+    /**
+     * Set new destination
+     */
     private void Roaming(bool enemyWalkAnywhere = false) {
 
         if (enemyWalkAnywhere) {
@@ -63,13 +63,17 @@ public class EnemyAI : MonoBehaviour {
         ChangeFacingDirection(startingPostion, roamPosition);
         navMeshAgent.SetDestination(roamPosition);
     }
-
-    // Finding a new path
+ 
+    /**
+     * Finding a new path
+     */
     private Vector3 GetRoamingPosition() {
         return startingPostion + Utils.GetRandomDir() * UnityEngine.Random.Range(roamingDistanceMin, roamingDistanceMax);
     }
 
-    // Enemy rotation
+    /**
+     * Enemy rotation
+     */
     private void ChangeFacingDirection(Vector3 sourcePosition, Vector3 targetPosition) {
         if (sourcePosition.x > targetPosition.x) {
             transform.rotation = Quaternion.Euler(0, -180, 0);

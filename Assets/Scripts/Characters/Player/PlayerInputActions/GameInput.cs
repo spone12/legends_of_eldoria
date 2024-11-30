@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine.InputSystem;
 using UnityEngine;
 using System;
@@ -21,16 +19,24 @@ public class GameInput : MonoBehaviour
         playerInputActions.Combat.Attack.started += PlayerAttack_started;
     }
 
+    /**
+     * Trigger to track a character's attack
+     */
     private void PlayerAttack_started(InputAction.CallbackContext obj) {
         OnPlayerAttack?.Invoke(this, EventArgs.Empty);
     }
 
+    /**
+     * Get movement vector
+     */
     public Vector2 GetMovementVector() {
         Vector2 inputVector = playerInputActions.Player.Move.ReadValue<Vector2>();
         return inputVector;
     }
-    
-    // Mouse position
+
+    /**
+     * Get mouse position
+     */
     public Vector3 GetMousePosition() {
         Vector3 mousePos = Mouse.current.position.ReadValue();
         return mousePos;

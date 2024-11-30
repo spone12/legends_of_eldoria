@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerVisual : MonoBehaviour
@@ -19,6 +17,9 @@ public class PlayerVisual : MonoBehaviour
         AdjustPlayerFacingDirection();
     }
 
+    /**
+     * Rotation of the player sprite depending on the mouse
+     */
     private void AdjustPlayerFacingDirection() {
         Vector3 mousePos = GameInput.Instance.GetMousePosition();
         Vector3 playerPos = Player.Instanse.GetPlayerScreenPostion();

@@ -15,10 +15,16 @@ public class ActiveWeapon : MonoBehaviour
         FollowMousePosition();
     }
 
+    /**
+     * Get active weapon
+    */
     public Sword GetActiveWeapon() {
         return sword;
     }
 
+    /**
+     * Active weapon follow mouse position
+    */
     private void FollowMousePosition() {
         Vector3 mousePos = GameInput.Instance.GetMousePosition();
         Vector3 playerPos = Player.Instanse.GetPlayerScreenPostion();

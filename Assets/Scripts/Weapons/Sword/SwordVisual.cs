@@ -16,10 +16,16 @@ public class SwordVisual : MonoBehaviour
         sword.OnSwordSwing += Sword_OnSwordSwing;
     }
 
+    /**
+     * Set animator trigger ATTACK
+    */
     private void Sword_OnSwordSwing(object sender, System.EventArgs e) {
         animator.SetTrigger(ATTACK);
     }
 
+    /**
+     * Trigger end attack animation
+    */
     public void TriggerEndAttackAnimation() {
         sword.AttackColliderTurnOff();
     }

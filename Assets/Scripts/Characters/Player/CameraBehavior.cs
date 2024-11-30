@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class CameraBehavior : MonoBehaviour
@@ -11,6 +9,9 @@ public class CameraBehavior : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
+    /**
+     * Camera following the player's movement
+     */
     private void LateUpdate() {
         Vector3 pos = transform.position;
         pos.x = player.position.x;
