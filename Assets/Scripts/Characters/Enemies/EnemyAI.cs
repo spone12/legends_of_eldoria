@@ -67,6 +67,14 @@ public class EnemyAI : MonoBehaviour {
     }
 
     /**
+     * Transitioning to the enemy's death state
+     */
+    public void SetDeathState() {
+        _navMeshAgent.ResetPath();
+        _currentState = State.Death;
+    }
+
+    /**
      * Current enemy state
      */
     private void StateHandler() {

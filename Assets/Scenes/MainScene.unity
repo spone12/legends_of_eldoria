@@ -134,6 +134,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Skeleton
       objectReference: {fileID: 0}
+    - target: {fileID: 6110799318679636640, guid: 40bb9989a10309f4da6a8436fc597c05, type: 3}
+      propertyPath: _enemySO
+      value: 
+      objectReference: {fileID: 11400000, guid: 75f8200656cf17444a158ec3dde05e6a, type: 2}
     - target: {fileID: 8430201256836742266, guid: 40bb9989a10309f4da6a8436fc597c05, type: 3}
       propertyPath: m_LocalPosition.x
       value: 2.59
