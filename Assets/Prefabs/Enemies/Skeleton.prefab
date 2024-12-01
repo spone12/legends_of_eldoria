@@ -143,10 +143,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ead60bd6662e2a47aaa3602ffe780e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingState: 1
-  roamingDistanceMin: 3
-  roamingDistanceMax: 7
-  roamingTimerMax: 2
+  _startingState: 1
+  _roamingDistanceMin: 3
+  _roamingDistanceMax: 7
+  _roamingTimerMax: 10
+  _isAttackingEnemy: 0
+  _attackingDistance: 2
+  _attackRate: 2
+  _isChaisingEnemy: 1
+  _chasingDistance: 10
+  _chasingSpeedMultiplier: 2
 --- !u!114 &6110799318679636640
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -256,6 +262,7 @@ GameObject:
   - component: {fileID: 2561886409397807318}
   - component: {fileID: 1464108076838627964}
   - component: {fileID: 1193359198913687494}
+  - component: {fileID: 5089092845053826150}
   m_Layer: 0
   m_Name: Visual
   m_TagString: Untagged
@@ -352,3 +359,16 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &5089092845053826150
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4773740758152047819}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32a2491a8cbddf3468bc92ddc21cef21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _enemyAI: {fileID: 5088829916461419908}
