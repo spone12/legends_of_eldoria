@@ -5,14 +5,7 @@ using System;
 
 public class EnemyAI : MonoBehaviour {
 
-    private NavMeshAgent _navMeshAgent;
-
-    private State _currentState;
     [SerializeField] private State _startingState;
-
-    private float _roamingTimer;
-    private Vector3 _roamPosition;
-    private Vector3 _startingPostion;
     [SerializeField] private float _roamingDistanceMin = 3f; // Min distance
     [SerializeField] private float _roamingDistanceMax = 7f; // Max distance
     [SerializeField] private float _roamingTimerMax = 2f; // Movement time
@@ -20,14 +13,20 @@ public class EnemyAI : MonoBehaviour {
     [SerializeField] private bool _isAttackingEnemy = false;
     [SerializeField] private float _attackingDistance = 2f;
     [SerializeField] private float _attackRate = 2f;
-    private float _nextAttackTime = 0f;
 
-    [SerializeField] private bool  _isChaisingEnemy = false;
+    [SerializeField] private bool _isChaisingEnemy = false;
     [SerializeField] private float _chasingDistance = 4f;
     [SerializeField] private float _chasingSpeedMultiplier = 2f;
-    private float _chaisingSpeed;
 
+    private NavMeshAgent _navMeshAgent;
+    private State _currentState;
+    private float _roamingTimer;
+    private Vector3 _roamPosition;
+    private Vector3 _startingPostion;
+  
+    private float _chaisingSpeed;
     private float _roamingSpeed;
+    private float _nextAttackTime = 0f;
 
     public event EventHandler OnEnemyAttack;
 

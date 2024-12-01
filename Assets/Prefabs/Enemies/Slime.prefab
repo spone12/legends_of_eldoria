@@ -92,7 +92,7 @@ CapsuleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0.37, y: 0.38}
@@ -132,10 +132,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ead60bd6662e2a47aaa3602ffe780e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingState: 1
-  roamingDistanceMin: 3
-  roamingDistanceMax: 7
-  roamingTimerMax: 2
+  _startingState: 0
+  _roamingDistanceMin: 0
+  _roamingDistanceMax: 0
+  _roamingTimerMax: 0
+  _isAttackingEnemy: 0
+  _attackingDistance: 0
+  _attackRate: 0
+  _isChaisingEnemy: 0
+  _chasingDistance: 0
+  _chasingSpeedMultiplier: 0
 --- !u!1 &2795825217654132783
 GameObject:
   m_ObjectHideFlags: 0
