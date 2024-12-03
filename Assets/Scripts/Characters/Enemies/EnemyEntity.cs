@@ -6,7 +6,7 @@ using UnityEngine;
 [RequireComponent (typeof(EnemyAI))]
 public class EnemyEntity : MonoBehaviour
 {
-    [SerializeField] private EnemySO _enemySO;
+    [SerializeField] private SkeletonDataSO _data;
     [SerializeField] private int _currentHealth;
 
     private PolygonCollider2D _polygonCollider2D;
@@ -23,11 +23,7 @@ public class EnemyEntity : MonoBehaviour
     }
 
     private void Start() {
-        _currentHealth = _enemySO.enemyHealth;
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision) {
-        Debug.Log("Attack");
+        _currentHealth = _data.Health;
     }
 
     /**
@@ -51,6 +47,15 @@ public class EnemyEntity : MonoBehaviour
      */
     public void PolygonColliderTurnOn() {
         _polygonCollider2D.enabled = true;
+    }
+
+    /**
+     * Damage to player on attack
+     */
+    private void OnTriggerStay2D(Collider2D collision) {
+        if (collision.transform.TryGetComponent(out Player player)) {
+            player.TakeDamage(transform, _data.AttackDamage);
+        }
     }
 
     /**

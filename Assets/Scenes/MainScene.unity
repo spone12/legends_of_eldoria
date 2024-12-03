@@ -130,10 +130,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 244275462}
     m_Modifications:
+    - target: {fileID: 1284086670054321685, guid: 40bb9989a10309f4da6a8436fc597c05, type: 3}
+      propertyPath: m_Mass
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2015667253664324075, guid: 40bb9989a10309f4da6a8436fc597c05, type: 3}
       propertyPath: m_Name
       value: Skeleton
       objectReference: {fileID: 0}
+    - target: {fileID: 6110799318679636640, guid: 40bb9989a10309f4da6a8436fc597c05, type: 3}
+      propertyPath: _data
+      value: 
+      objectReference: {fileID: 11400000, guid: bee00ff391acea542a77b68e4000564d, type: 2}
     - target: {fileID: 6110799318679636640, guid: 40bb9989a10309f4da6a8436fc597c05, type: 3}
       propertyPath: _enemySO
       value: 
@@ -72130,7 +72138,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 500
+  m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 0
@@ -72340,7 +72348,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 768137abcaeb8e14a81b54d365a2e0d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movingSpeed: 12
+  _movingSpeed: 12
+  _maxHealth: 30
 --- !u!1001 &5020625104201245964
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -72468,6 +72477,7 @@ GameObject:
   - component: {fileID: 6792552318507103646}
   - component: {fileID: 4887757609435095714}
   - component: {fileID: 3753587357731599793}
+  - component: {fileID: 6792552318507103647}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -72668,6 +72678,20 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.74838924, y: 1.3812675}
   m_EdgeRadius: 0
+--- !u!114 &6792552318507103647
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5321284284430263681}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ced77937189d23449595da185e004c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _knockBackForce: 1.5
+  _knockBackTimeMax: 0.1
 --- !u!1 &7612892501475915757
 GameObject:
   m_ObjectHideFlags: 0

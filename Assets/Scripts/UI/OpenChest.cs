@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ChestInteraction : MonoBehaviour
@@ -14,11 +12,7 @@ public class ChestInteraction : MonoBehaviour
     void Start()
     {
 
-        GameObject playerObject = GameObject.Find("Player");
-        if (playerObject != null) {
-            eventHandler = playerObject.GetComponent<InputEventHandler>();
-        }
-
+        eventHandler = Player.Instanse.GetComponent<InputEventHandler>();
         if (tooltip != null) {
             tooltip.SetActive(false);
         }   
