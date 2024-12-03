@@ -72349,7 +72349,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _movingSpeed: 12
-  _maxHealth: 30
+  _maxHealth: 10
+  _damageRecoveryTime: 0.5
 --- !u!1001 &5020625104201245964
 PrefabInstance:
   m_ObjectHideFlags: 0

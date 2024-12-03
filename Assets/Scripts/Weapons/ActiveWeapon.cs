@@ -12,7 +12,9 @@ public class ActiveWeapon : MonoBehaviour
     }
 
     private void Update() {
-        FollowMousePosition();
+        if (Player.Instanse.IsPlayerAlive()) {
+            FollowMousePosition();
+        }
     }
 
     /**
