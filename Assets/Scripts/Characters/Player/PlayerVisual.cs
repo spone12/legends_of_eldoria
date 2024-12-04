@@ -16,7 +16,7 @@ public class PlayerVisual : MonoBehaviour
     }
 
     private void Start() {
-        Player.Instanse.OnPlayerDeath += Instanse_OnPlayerDeath;
+        PlayerHealth.Instanse.OnPlayerDeath += Instanse_OnPlayerDeath;
     }
 
     private void Update() {

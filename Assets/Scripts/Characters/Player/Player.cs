@@ -8,41 +8,34 @@ public class Player : MonoBehaviour
     // Singleton
     public static Player Instanse {  get; private set; }
 
-    public event EventHandler OnPlayerDeath;
-
     // Player moving speed
     [SerializeField] private float _movingSpeed = 12f;
-    [SerializeField] private int _maxHealth = 30;
-    [SerializeField] private float _damageRecoveryTime = 0.5f;
+
+    private KnockBack _knockBack;
+    private Rigidbody2D _rb;
 
     // Player min moving speed
     private float _minMovingSpeed = 0.1f;
 
     // Player is running
     private bool _isRunning = false;
-    private int _currentHealth;
-    private bool _canTakeDamage;
-    private bool _isAlive = true;
+    public bool _isAlive = true;
 
     Vector2 inputVector;
 
-    private KnockBack _knockBack;
-    private Rigidbody2D _rb;
-
     private void Awake() {
+
         Instanse = this; // Into the Instanse property we write this class itself
         _rb = GetComponent<Rigidbody2D>();
         _knockBack = GetComponent<KnockBack>();
     }
 
     private void Start() {
-        _currentHealth = _maxHealth;
-        _canTakeDamage = true;
         GameInput.Instance.OnPlayerAttack += Player_OnPlayerAttack;
     }
 
     /**
-     * 
+     * Update
      */
     private void Update() {
         inputVector = GameInput.Instance.GetMovementVector();
@@ -58,22 +51,6 @@ public class Player : MonoBehaviour
         }
 
         HandleMovement();
-    }
-
-    /**
-     * Take damage to player
-     */
-    public void TakeDamage(Transform damageSource, int damage) {
-        if (_isAlive && _canTakeDamage) {
-            _canTakeDamage = false;
-            _currentHealth = Mathf.Max(0, _currentHealth -= damage);
-            Debug.Log(_currentHealth);
-            _knockBack.GetKnockedBack(damageSource);
-
-            StartCoroutine(DamageRecoveryCorutine());
-        }
-
-        DetectDamage();
     }
 
     /**
@@ -93,27 +70,6 @@ public class Player : MonoBehaviour
      * Is player alive
      */
     public bool IsPlayerAlive() => _isAlive;
-
-    /**
-     * Detect player death
-     */
-    private void DetectDamage() {
-        if (_isAlive && _currentHealth == 0) {
-            _isAlive = false;
-            _knockBack.StopKnockBackMovement();
-            GameInput.Instance.DisableMovement();
-
-            OnPlayerDeath?.Invoke(this, EventArgs.Empty);
-        }
-    }
-
-    /**
-     * Coroutine of delaying the summoning of enemy re-attacks
-     */
-    private IEnumerator DamageRecoveryCorutine() {
-        yield return new WaitForSeconds(_damageRecoveryTime);
-        _canTakeDamage = true;
-    }
 
     /**
      * Trigger to track a character's attack
