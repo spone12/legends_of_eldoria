@@ -14,7 +14,7 @@ public class AttackingState : IEnemyState {
         // Enemy attacks
         if (Time.time >= _nextAttackTime) {
             enemyAI.TriggerAttack();
-            _nextAttackTime = Time.time + 2f;
+            _nextAttackTime = Time.time + enemyAI.AttackingRate;
         }
 
         // If the player has moved out of the enemy's attack range, we start pursuing the hero

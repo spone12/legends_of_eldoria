@@ -31,8 +31,8 @@ public class ChasingState : IEnemyState {
     }
 
     /**
-    * Enemy rotation
-    */
+     * Enemy sprite rotation depending on direction
+     */
     private void ChangeFacingDirection(EnemyAI enemyAI, Vector3 sourcePosition, Vector3 targetPosition) {
         if (sourcePosition.x > targetPosition.x) {
             enemyAI.transform.rotation = Quaternion.Euler(0, -180, 0);

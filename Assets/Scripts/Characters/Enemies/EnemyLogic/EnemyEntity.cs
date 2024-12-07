@@ -53,8 +53,9 @@ public class EnemyEntity : MonoBehaviour
      * Damage to player on attack
      */
     private void OnTriggerStay2D(Collider2D collision) {
-        if (collision.transform.TryGetComponent(out Player player)) {
-            PlayerHealth.Instanse.TakeDamage(transform, _data.AttackDamage);
+        
+        if (_enemyAI.CurrentState is AttackingState && collision.transform.TryGetComponent(out Player player)) {
+            PlayerHealth.Instanse.TakeDamage(transform, _data.AttackDamage, _enemyAI.AttackingRate);
         }
     }
 
@@ -70,7 +71,6 @@ public class EnemyEntity : MonoBehaviour
             _polygonCollider2D.enabled = false;
 
             _enemyAI.SetDeathState();
-
             OnDeath?.Invoke(this, EventArgs.Empty);
         }
     }

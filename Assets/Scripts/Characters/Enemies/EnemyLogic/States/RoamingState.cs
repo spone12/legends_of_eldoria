@@ -1,6 +1,5 @@
 using UnityEngine;
 using Project.Utils;
-using static UnityEngine.RuleTile.TilingRuleOutput;
 
 public class RoamingState : IEnemyState {
     private Vector3 _targetPosition;
@@ -29,16 +28,19 @@ public class RoamingState : IEnemyState {
         enemyAI.NavMeshAgent.ResetPath();
     }
 
+    /**
+     * Set roaming destination random position
+     */
     private void SetRandomTarget(EnemyAI enemyAI) {
         
         _targetPosition = enemyAI.transform.position + Utils.GetRandomDir() * Random.Range(enemyAI.RoamingDistanceMin, enemyAI.RoamingDistanceMax);
-
         enemyAI.NavMeshAgent.SetDestination(_targetPosition);
+
         ChangeFacingDirection(enemyAI, enemyAI.transform.position, _targetPosition);
     }
 
     /**
-    * Enemy rotation
+    * Enemy sprite rotation depending on direction
     */
     private void ChangeFacingDirection(EnemyAI enemyAI, Vector3 sourcePosition, Vector3 targetPosition) {
         if (sourcePosition.x > targetPosition.x) {

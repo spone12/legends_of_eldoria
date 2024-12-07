@@ -130,26 +130,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 244275462}
     m_Modifications:
-    - target: {fileID: 1284086670054321685, guid: 40bb9989a10309f4da6a8436fc597c05, type: 3}
-      propertyPath: m_Mass
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 2015667253664324075, guid: 40bb9989a10309f4da6a8436fc597c05, type: 3}
       propertyPath: m_Name
       value: Skeleton
       objectReference: {fileID: 0}
-    - target: {fileID: 5088829916461419908, guid: 40bb9989a10309f4da6a8436fc597c05, type: 3}
-      propertyPath: _startingState
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6110799318679636640, guid: 40bb9989a10309f4da6a8436fc597c05, type: 3}
-      propertyPath: _data
-      value: 
-      objectReference: {fileID: 11400000, guid: bee00ff391acea542a77b68e4000564d, type: 2}
-    - target: {fileID: 6110799318679636640, guid: 40bb9989a10309f4da6a8436fc597c05, type: 3}
-      propertyPath: _enemySO
-      value: 
-      objectReference: {fileID: 11400000, guid: 75f8200656cf17444a158ec3dde05e6a, type: 2}
     - target: {fileID: 8430201256836742266, guid: 40bb9989a10309f4da6a8436fc597c05, type: 3}
       propertyPath: m_LocalPosition.x
       value: 2.59
@@ -72710,7 +72694,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maxHealth: 30
-  _damageRecoveryTime: 0.5
 --- !u!1 &7612892501475915757
 GameObject:
   m_ObjectHideFlags: 0
@@ -72770,6 +72753,14 @@ PrefabInstance:
     - target: {fileID: 2015667253664324075, guid: 220fb6f017a47684785047f1146024c0, type: 3}
       propertyPath: m_Name
       value: Slime
+      objectReference: {fileID: 0}
+    - target: {fileID: 2015667253664324075, guid: 220fb6f017a47684785047f1146024c0, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5088829916461419908, guid: 220fb6f017a47684785047f1146024c0, type: 3}
+      propertyPath: _chasingLostThreshold
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8430201256836742266, guid: 220fb6f017a47684785047f1146024c0, type: 3}
       propertyPath: m_LocalPosition.x
