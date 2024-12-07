@@ -138,6 +138,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Skeleton
       objectReference: {fileID: 0}
+    - target: {fileID: 5088829916461419908, guid: 40bb9989a10309f4da6a8436fc597c05, type: 3}
+      propertyPath: _startingState
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6110799318679636640, guid: 40bb9989a10309f4da6a8436fc597c05, type: 3}
       propertyPath: _data
       value: 
@@ -72349,8 +72353,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _movingSpeed: 12
-  _maxHealth: 10
-  _damageRecoveryTime: 0.5
+  _isAlive: 1
 --- !u!1001 &5020625104201245964
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -72706,6 +72709,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a43f703df53d06c4097fe6f8ae8a8415, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _maxHealth: 30
+  _damageRecoveryTime: 0.5
 --- !u!1 &7612892501475915757
 GameObject:
   m_ObjectHideFlags: 0
