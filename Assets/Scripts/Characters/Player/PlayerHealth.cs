@@ -45,9 +45,8 @@ public class PlayerHealth : MonoBehaviour
      * Detect player death
      */
     private void CheckIfPlayerDeath() {
-        if (Player.Instanse.IsPlayerAlive() && _currentHealth == 0) {
 
-            Debug.Log("PLAYER OnTriggerStay2D");
+        if (Player.Instanse.IsPlayerAlive() && _currentHealth == 0) {
             Player.Instanse._isAlive = false;
             _knockBack.StopKnockBackMovement();
             GameInput.Instance.DisableMovement();

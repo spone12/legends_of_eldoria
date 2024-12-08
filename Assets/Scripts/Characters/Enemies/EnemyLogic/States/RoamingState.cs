@@ -16,6 +16,7 @@ public class RoamingState : IEnemyState {
         if (_roamingTimer <= 0) {
             SetRandomTarget(enemyAI);
             _roamingTimer = Random.Range(2f, 5f);
+            Debug.Log(_roamingTimer);
         }
 
         // Player too close, switching to Chasing

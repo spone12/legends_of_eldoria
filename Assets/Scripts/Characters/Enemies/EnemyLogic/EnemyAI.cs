@@ -72,7 +72,7 @@ public class EnemyAI : MonoBehaviour {
      */
     public void SetState(State newState) {
 
-        Debug.Log($"Changing state to: {newState}");
+        // Debug.Log($"Changing state to: {newState}");
         _currentState?.ExitState(this);
         _currentState = EnemyStateFactory.CreateState(newState, this);
 
@@ -107,7 +107,6 @@ public class EnemyAI : MonoBehaviour {
      */
     public void SetDeathState() {
         SetState(State.Death);
-        enabled = false;
     }
 
     public void TriggerAttack() {
