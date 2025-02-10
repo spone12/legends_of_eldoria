@@ -15,6 +15,8 @@ public class EnemyAI : MonoBehaviour {
 
     [Header("Roaming Settings")]
 
+    [Tooltip("Is roaming")]
+    [SerializeField] private bool _isRoaming = true;
     [Tooltip("Player detection distance")]
     [SerializeField] private float _playerDetectionDistance = 5f;
     [Tooltip("Min distance roaming")]
@@ -26,6 +28,8 @@ public class EnemyAI : MonoBehaviour {
 
     [Header("Chasing Settings")]
 
+    [Tooltip("Is chasing player")]
+    [SerializeField] private bool _isChasing = true;
     [Tooltip("Roaming speed")]
     [SerializeField] private float _chasingSpeedMultiplier = 2f;
     [Tooltip("Roaming speed")]
@@ -33,18 +37,23 @@ public class EnemyAI : MonoBehaviour {
 
     [Header("Attacking Settings")]
 
+    [Tooltip("Is attacking player")]
+    [SerializeField] private bool _isAttacking = true;
     [Tooltip("Attacking distance")]
     [SerializeField] private float _attackingDistance = 2f;
     [Tooltip("Attacking rate")]
     [SerializeField] private float _attackingRate = 2f;
 
     public IEnemyState CurrentState => _currentState;
+    public bool IsRoaming => _isRoaming;
     public float PlayerDetectionDistance => _playerDetectionDistance;
     public float RoamingDistanceMin => _roamingDistanceMin;
     public float RoamingDistanceMax => _roamingDistanceMax;
     public float RoamingSpeed => _roamingSpeed;
+    public bool IsChasing => _isChasing;
     public float ChasingSpeedMultiplier => _chasingSpeedMultiplier;
     public float ChasingLostThreshold => _chasingLostThreshold;
+    public bool IsAttacking => _isAttacking;
     public float AttackingDistance => _attackingDistance;
     public float AttackingRate => _attackingRate;
 

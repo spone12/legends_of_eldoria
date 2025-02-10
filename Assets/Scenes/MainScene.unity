@@ -134,6 +134,30 @@ PrefabInstance:
       propertyPath: m_Name
       value: Skeleton
       objectReference: {fileID: 0}
+    - target: {fileID: 5088829916461419908, guid: 40bb9989a10309f4da6a8436fc597c05, type: 3}
+      propertyPath: _isChasing
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5088829916461419908, guid: 40bb9989a10309f4da6a8436fc597c05, type: 3}
+      propertyPath: _isRoaming
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5088829916461419908, guid: 40bb9989a10309f4da6a8436fc597c05, type: 3}
+      propertyPath: _isAttacking
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5088829916461419908, guid: 40bb9989a10309f4da6a8436fc597c05, type: 3}
+      propertyPath: _startingState
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5089092845053826150, guid: 40bb9989a10309f4da6a8436fc597c05, type: 3}
+      propertyPath: _shadow
+      value: 
+      objectReference: {fileID: 1619257829}
+    - target: {fileID: 5089092845053826150, guid: 40bb9989a10309f4da6a8436fc597c05, type: 3}
+      propertyPath: _enemyShadow
+      value: 
+      objectReference: {fileID: 1619257829}
     - target: {fileID: 8430201256836742266, guid: 40bb9989a10309f4da6a8436fc597c05, type: 3}
       propertyPath: m_LocalPosition.x
       value: 2.59
@@ -69810,6 +69834,11 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 141726418}
   m_SourcePrefab: {fileID: 100100000, guid: c38393e3d318d604ba48e9402f91a82f, type: 3}
+--- !u!1 &1619257829 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2795825217654132783, guid: 40bb9989a10309f4da6a8436fc597c05, type: 3}
+  m_PrefabInstance: {fileID: 9570500}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1683464341
 GameObject:
   m_ObjectHideFlags: 0
