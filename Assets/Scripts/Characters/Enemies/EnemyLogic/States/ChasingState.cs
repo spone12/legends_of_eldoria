@@ -14,7 +14,7 @@ public class ChasingState : IEnemyState {
         float distanceToPlayer = Vector3.Distance(enemyAI.transform.position, enemyAI.PlayerTransform.position);
 
         // Player too far, switching to Roaming
-        if (enemyAI.IsRoaming && distanceToPlayer > enemyAI.ChasingLostThreshold) {
+        if (distanceToPlayer > enemyAI.ChasingLostThreshold) {
             enemyAI.SetState(State.Roaming);
             return;
         }
