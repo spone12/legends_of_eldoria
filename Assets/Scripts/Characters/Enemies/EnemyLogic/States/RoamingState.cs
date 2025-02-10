@@ -6,6 +6,9 @@ public class RoamingState : IEnemyState {
     private float _roamingTimer;
 
     public void EnterState(EnemyAI enemyAI) {
+        if (!enemyAI.IsRoaming) {
+            enemyAI.SetState(State.Idle);
+        }
         _roamingTimer = Random.Range(2f, 5f);
         SetRandomTarget(enemyAI);
     }
@@ -20,7 +23,7 @@ public class RoamingState : IEnemyState {
         }
 
         // Player too close, switching to Chasing
-        if (Vector3.Distance(enemyAI.transform.position, enemyAI.PlayerTransform.position) < enemyAI.PlayerDetectionDistance) {
+        if (enemyAI.IsChasing && Vector3.Distance(enemyAI.transform.position, enemyAI.PlayerTransform.position) < enemyAI.PlayerDetectionDistance) {
             enemyAI.SetState(State.Chasing);
         }
     }

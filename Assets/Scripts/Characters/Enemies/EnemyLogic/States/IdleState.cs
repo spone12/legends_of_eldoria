@@ -9,10 +9,14 @@ public class IdleState : IEnemyState {
     }
 
     public void UpdateState(EnemyAI enemyAI) {
+
+        if (enemyAI.IsRoaming) {
+            enemyAI.SetState(State.Roaming);
+        }
  
         float distanceToPlayer = Vector3.Distance(enemyAI.transform.position, enemyAI.PlayerTransform.position);
         // When a player is detected, the status changes to pursuit
-        if (distanceToPlayer < enemyAI.PlayerDetectionDistance) {
+        if (enemyAI.IsChasing && distanceToPlayer < enemyAI.PlayerDetectionDistance) {
             enemyAI.SetState(State.Chasing);
         }
     }

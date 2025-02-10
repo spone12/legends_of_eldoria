@@ -3,6 +3,9 @@ using UnityEngine;
 public class ChasingState : IEnemyState {
 
     public void EnterState(EnemyAI enemyAI) {
+        if (!enemyAI.IsChasing) {
+            enemyAI.SetState(State.Roaming);
+        }
         enemyAI.NavMeshAgent.speed *= enemyAI.ChasingSpeedMultiplier;
     }
 
@@ -11,13 +14,13 @@ public class ChasingState : IEnemyState {
         float distanceToPlayer = Vector3.Distance(enemyAI.transform.position, enemyAI.PlayerTransform.position);
 
         // Player too far, switching to Roaming
-        if (distanceToPlayer > enemyAI.ChasingLostThreshold) {
+        if (enemyAI.IsRoaming && distanceToPlayer > enemyAI.ChasingLostThreshold) {
             enemyAI.SetState(State.Roaming);
             return;
         }
 
         // Player close enough, switching to Attacking
-        if (distanceToPlayer <= enemyAI.AttackingDistance) {
+        if (enemyAI.IsAttacking && distanceToPlayer <= enemyAI.AttackingDistance) {
             enemyAI.SetState(State.Attacking);
             return;
         }

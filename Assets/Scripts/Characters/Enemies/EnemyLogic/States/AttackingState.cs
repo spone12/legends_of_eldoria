@@ -6,6 +6,9 @@ public class AttackingState : IEnemyState {
     private float _nextAttackTime;
 
     public void EnterState(EnemyAI enemyAI) {
+        if (!enemyAI.IsAttacking) {
+            enemyAI.SetState(State.Roaming);
+        }
         _nextAttackTime = Time.time;
     }
 
