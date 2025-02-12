@@ -16,12 +16,19 @@ public class UIInventoryPage : MonoBehaviour
 
     private int _currentlyDraggedItemIndex = -1;
 
+    public Sprite image;
+    public int quantity;
+    public string title, description;
+
     public event Action<int> 
         OnDescriptionRequested,
         OnItemActionRequested,
         OnStartDragging;
 
     public event Action<int, int> OnSwapItems;
+
+    //[SerializeField]
+    //private ItemActionPanel actionPanel;
 
     private void Awake() {
         Hide();
@@ -36,7 +43,7 @@ public class UIInventoryPage : MonoBehaviour
         for (int i = 0; i < inventorySize; i++) {
             UIInventoryItem uiItem = 
                 Instantiate(_itemPrefab, Vector3.zero, Quaternion.identity);
-            uiItem.transform.SetParent(_contentPanel);
+            uiItem.transform.SetParent(_contentPanel, false);
             _listOfUIItems.Add(uiItem);
 
             uiItem.OnItemClicked += HandleItemSelection;
@@ -47,12 +54,30 @@ public class UIInventoryPage : MonoBehaviour
         }
     }
 
+    internal void ResetAllItems()
+    {
+        foreach (var item in _listOfUIItems) {
+            item.ResetData();
+            item.Deselect();
+        }
+    }
+
+    internal void UpdateDescription(int itemIndex, Sprite itemImage, string name, string description)
+    {
+        _itemDescription.SetDescription(itemImage, name, description);
+        DeselectAllItems();
+        _listOfUIItems[itemIndex].Select();
+    }
+
     /**
      * Show inventory
      */
     public void Show() {
         gameObject.SetActive(true);
-        ResetSelection();
+        //ResetSelection();
+
+        _itemDescription.ResetDescription();
+        _listOfUIItems[0].SetData(image, quantity);
     }
 
     /**
@@ -75,11 +100,13 @@ public class UIInventoryPage : MonoBehaviour
      * 
      */
     private void HandleItemSelection(UIInventoryItem inventoryItemUI) {
-        int index = _listOfUIItems.IndexOf(inventoryItemUI);
+        _itemDescription.SetDescription(image, title, description);
+        _listOfUIItems[0].Select();
+        /*int index = _listOfUIItems.IndexOf(inventoryItemUI);
         if (index == -1)
             return;
 
-        OnDescriptionRequested?.Invoke(index);
+        OnDescriptionRequested?.Invoke(index);*/
     }
 
     /**
