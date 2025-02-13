@@ -11,14 +11,14 @@ public class UIInventoryPage : MonoBehaviour
     private RectTransform _contentPanel;
     [SerializeField]
     private UIInventoryDescription _itemDescription;
+    [SerializeField]
+    private MouseFollower _mouseFollower;
 
     List<UIInventoryItem> _listOfUIItems = new List<UIInventoryItem>();
 
     private int _currentlyDraggedItemIndex = -1;
 
-    public Sprite image;
-    public int quantity;
-    public string title, description;
+    private int _currentItemIndex = 0;
 
     public event Action<int> 
         OnDescriptionRequested,
@@ -32,7 +32,7 @@ public class UIInventoryPage : MonoBehaviour
 
     private void Awake() {
         Hide();
-        // mouseFollower.Toggle(false);
+        _mouseFollower.Toggle(false);
         _itemDescription.ResetDescription();
     }
 
@@ -69,15 +69,19 @@ public class UIInventoryPage : MonoBehaviour
         _listOfUIItems[itemIndex].Select();
     }
 
+    public void UpdateData(int itemIndex, Sprite itemImage, int itemQuantity) {
+        if (_listOfUIItems.Count > itemIndex) {
+            _listOfUIItems[itemIndex].SetData(itemImage, itemQuantity);
+        }
+    }
+
     /**
      * Show inventory
      */
     public void Show() {
         gameObject.SetActive(true);
-        //ResetSelection();
-
         _itemDescription.ResetDescription();
-        _listOfUIItems[0].SetData(image, quantity);
+        ResetSelection();
     }
 
     /**
@@ -89,6 +93,26 @@ public class UIInventoryPage : MonoBehaviour
     }
 
     /**
+     * Selection item switching
+     */
+    public void SelectionItemSwitching(string type, int inventorySize) {
+
+        _listOfUIItems[_currentItemIndex].Deselect();
+        if (type == "Down") {
+            if (++_currentItemIndex >= inventorySize) {
+                _currentItemIndex = inventorySize - 1;
+            }
+            
+        } else {
+            if (0 > --_currentItemIndex) {
+                _currentItemIndex = 0;
+            }
+        }
+
+        _listOfUIItems[_currentItemIndex].Select();
+    }
+
+    /**
      * 
      */
     public void ResetSelection() {
@@ -96,23 +120,36 @@ public class UIInventoryPage : MonoBehaviour
         DeselectAllItems();
     }
 
+    private void DeselectAllItems() {
+        foreach (UIInventoryItem item in _listOfUIItems) {
+            item.Deselect();
+        }
+
+        //actionPanel.Toggle(false);
+    } 
+
+    private void CreateDraggedItem(Sprite sprite, int quantity) {
+        _mouseFollower.Toggle(true);
+        _mouseFollower.SetData(sprite, quantity);
+    }
+
     /**
      * 
      */
     private void HandleItemSelection(UIInventoryItem inventoryItemUI) {
-        _itemDescription.SetDescription(image, title, description);
-        _listOfUIItems[0].Select();
-        /*int index = _listOfUIItems.IndexOf(inventoryItemUI);
+
+        int index = _listOfUIItems.IndexOf(inventoryItemUI);
         if (index == -1)
             return;
 
-        OnDescriptionRequested?.Invoke(index);*/
+        OnDescriptionRequested?.Invoke(index);
     }
 
     /**
      * 
      */
     private void HandleBeginDrag(UIInventoryItem inventoryItemUI) {
+
         int index = _listOfUIItems.IndexOf(inventoryItemUI);
         if (index == -1)
             return;
@@ -120,26 +157,6 @@ public class UIInventoryPage : MonoBehaviour
         _currentlyDraggedItemIndex = index;
         HandleItemSelection(inventoryItemUI);
         OnStartDragging?.Invoke(index);
-    }
-
-    /**
-     * 
-     */
-    private void HandleSwap(UIInventoryItem inventoryItemUI) {
-        int index = _listOfUIItems.IndexOf(inventoryItemUI);
-        if (index == -1) {
-            return;
-        }
-
-        OnSwapItems?.Invoke(_currentlyDraggedItemIndex, index);
-        HandleItemSelection(inventoryItemUI);
-    }
-
-    /**
-     * 
-     */
-    private void HandleEndDrag(UIInventoryItem inventoryItemUI) {
-        ResetDraggedItem();
     }
 
     /**
@@ -154,19 +171,31 @@ public class UIInventoryPage : MonoBehaviour
         OnItemActionRequested?.Invoke(index);
     }
 
-    private void DeselectAllItems() {
-        foreach (UIInventoryItem item in _listOfUIItems) {
-            item.Deselect();
+    /**
+     * 
+     */
+    private void HandleSwap(UIInventoryItem inventoryItemUI) {
+        int index = _listOfUIItems.IndexOf(inventoryItemUI);
+        if (index == -1) {
+            return;
         }
 
-        //actionPanel.Toggle(false);
+        OnSwapItems?.Invoke(_currentlyDraggedItemIndex, index);
+        //HandleItemSelection(inventoryItemUI);
+    }
+
+    /**
+     * 
+     */
+    private void HandleEndDrag(UIInventoryItem inventoryItemUI) {
+        ResetDraggedItem();
     }
 
     /**
      * 
      */
     private void ResetDraggedItem() {
-        //mouseFollower.Toggle(false);
+        _mouseFollower.Toggle(false);
         _currentlyDraggedItemIndex = -1;
     }
 }
