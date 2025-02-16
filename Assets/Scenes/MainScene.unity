@@ -73784,7 +73784,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _inventoryUI: {fileID: 90720066067688860}
-  inventorySize: 30
+  _inventoryData: {fileID: 11400000, guid: 6dcb8a6a371a32d4cbfe49b81ca96c18, type: 2}
 --- !u!1 &7612892501475915757
 GameObject:
   m_ObjectHideFlags: 0
